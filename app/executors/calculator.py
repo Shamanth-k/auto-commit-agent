@@ -24,6 +24,10 @@ class CalculatorExecutor(BaseExecutor):
             "add_calculator_docstrings": (
                 self._add_calculator_docstrings
             ),
+            "add_factorial_function": self._add_factorial_function,
+            "add_percentage_fraction_function": (
+                self._add_percentage_fraction_function
+            ),
             "add_calculator_constants": (
                 self._add_calculator_constants
             ),
@@ -318,6 +322,66 @@ def maximum(values: list[float]) -> float:
             content.rstrip() + insertion,
             encoding="utf-8",
         )
+
+    def _add_factorial_function(
+        self,
+        repository: Path,
+    ) -> None:
+        calculator = self._calculator_file(repository)
+
+        content = calculator.read_text(
+            encoding="utf-8"
+        )
+
+        if "def factorial(" in content:
+            raise RuntimeError(
+                "Calculator factorial function already exists."
+            )
+
+        addition = """
+def factorial(value: int) -> int:
+    if value < 0:
+        raise ValueError(
+            "Factorial is not defined for negative values"
+        )
+    result = 1
+    for number in range(2, value + 1):
+        result *= number
+    return result
+"""
+
+        self._append_once(
+            calculator,
+            "def factorial(",
+            addition,
+        )
+
+    def _add_percentage_fraction_function(
+        self,
+        repository: Path,
+    ) -> None:
+        calculator = self._calculator_file(repository)
+
+        content = calculator.read_text(
+            encoding="utf-8"
+        )
+
+        if "def percentage_fraction(" in content:
+            raise RuntimeError(
+                "Calculator percentage fraction function already exists."
+            )
+
+        addition = """
+def percentage_fraction(percent: float) -> float:
+    return percent / 100
+"""
+
+        self._append_once(
+            calculator,
+            "def percentage_fraction(",
+            addition,
+        )
+
 
     def _add_calculator_operations(
         self,

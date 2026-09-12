@@ -1,0 +1,66 @@
+name: Daily Auto Commit
+
+on:
+  schedule:
+    # 00:30 UTC = 06:00 IST
+    - cron: "30 0 * * *"
+
+  workflow_dispatch:
+
+concurrency:
+  group: daily-auto-commit
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  daily-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout automation repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install pytest
+        run: python -m pip install pytest
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone target repository
+        env:
+          TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
+        run: |
+          git clone "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" "$GITHUB_WORKSPACE/target"
+
+      - name: Run daily automation
+        env:
+          PROJECT_REPOSITORY: ${{ github.workspace }}/target
+          AGENT_REPOSITORY: ${{ github.workspace }}
+          TASK_POOL: ${{ github.workspace }}/tasks/task_pool.json
+          TASK_STATE: ${{ github.workspace }}/tasks/state.json
+        run: |
+          python -m app.daily_run
+
+      - name: Push target repository
+        working-directory: ${{ github.workspace }}/target
+        env:
+          TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
+        run: |
+          git push "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" main
+
+      - name: Push automation state
+        env:
+          AGENT_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
+        run: |
+          git push "https://x-access-token:${AGENT_TOKEN}@github.com/Shamanth-k/auto-commit-agent.git" main

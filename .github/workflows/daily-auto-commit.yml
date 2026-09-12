@@ -20,19 +20,19 @@ jobs:
 
     steps:
       - name: Checkout automation repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
 
       - name: Install pytest
         run: python -m pip install pytest
 
-      - name: Configure Git
+      - name: Configure automation Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -42,6 +42,12 @@ jobs:
           TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
         run: |
           git clone "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" "$GITHUB_WORKSPACE/target"
+
+      - name: Configure target Git
+        working-directory: ${{ github.workspace }}/target
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Run daily automation
         env:

@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1,
+    "type": "testing",
+    "title": "Add division by zero test",
+    "description": "Add a test verifying that division by zero raises ValueError.",
+    "action": "add_division_zero_test",
+    "commit_message": "test: add division by zero coverage"
+  },
+  {
+    "id": 2,
+    "title": "Add negative calculator tests",
+    "type": "testing",
+    "action": "add_negative_calculator_tests",
+    "commit_message": "test: add negative calculator coverage"
+  },
+  {
+    "id": 3,
+    "type": "testing",
+    "title": "Test empty word count",
+    "description": "Add a test verifying that empty text has zero words.",
+    "action": "add_empty_word_count_test",
+    "commit_message": "test: cover empty word count"
+  },
+  {
+    "id": 4,
+    "type": "documentation",
+    "title": "Add usage documentation",
+    "description": "Add a usage section to README.md.",
+    "action": "add_usage_section",
+    "commit_message": "docs: add usage instructions"
+  },
+  {
+    "id": 5,
+    "type": "documentation",
+    "title": "Add development documentation",
+    "description": "Document how to run the project's tests.",
+    "action": "add_development_section",
+    "commit_message": "docs: add development instructions"
+  },
+  {
+    "id": 6,
+    "type": "testing",
+    "title": "Add another division test",
+    "description": "Add coverage for a normal decimal division.",
+    "action": "add_division_zero_test",
+    "commit_message": "test: improve division coverage"
+  },
+  {
+    "id": 7,
+    "type": "testing",
+    "title": "Expand negative number coverage",
+    "description": "Expand calculator coverage for negative values.",
+    "action": "add_negative_calculator_tests",
+    "commit_message": "test: expand negative number coverage"
+  },
+  {
+    "id": 8,
+    "type": "testing",
+    "title": "Test empty text",
+    "description": "Add explicit coverage for empty text input.",
+    "action": "add_empty_word_count_test",
+    "commit_message": "test: cover empty text input"
+  },
+  {
+    "id": 9,
+    "type": "documentation",
+    "title": "Document utility usage",
+    "description": "Document how the utility package is used.",
+    "action": "add_usage_section",
+    "commit_message": "docs: document utility usage"
+  },
+  {
+    "id": 10,
+    "type": "documentation",
+    "title": "Document development workflow",
+    "description": "Document the project's development workflow.",
+    "action": "add_development_section",
+    "commit_message": "docs: document development workflow"
+  }
+]

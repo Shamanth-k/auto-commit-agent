@@ -1,0 +1,10 @@
+repository:
+  path: "C:/Users/Shamanth Krishna VR/Desktop/auto-commit-test-repo"
+  branch: "main"
+
+daily:
+  min_commits: 2
+  max_commits: 3
+
+git:
+  push: false

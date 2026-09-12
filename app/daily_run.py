@@ -1,4 +1,5 @@
 import os
+import sys
 
 from app.git.client import GitClient
 from app.task_manager.executor import TaskExecutor
@@ -29,7 +30,7 @@ STATE = os.environ.get(
 )
 
 
-def main():
+def main() -> int:
     pool = TaskPool(POOL, STATE)
 
     # Start a new cycle only when the previous cycle
@@ -69,23 +70,33 @@ def main():
         except Exception as error:
             print(f"\nTask {task['id']} failed:")
             print(error)
-            break
 
-    if completed_tasks:
-        pool.mark_used(
-            [task["id"] for task in completed_tasks]
-        )
+            print(
+                f"\nCompleted "
+                f"{len(completed_tasks)}/{len(tasks)} tasks."
+            )
 
-        state_git.add_all()
-        state_git.commit("chore: update task state")
+            print("State was not updated.")
 
-        print("\nState committed.")
+            return 1
+
+    # State is updated only after all three tasks succeed.
+    pool.mark_used(
+        [task["id"] for task in completed_tasks]
+    )
+
+    state_git.add_all()
+    state_git.commit("chore: update task state")
+
+    print("\nState committed.")
 
     print(
         f"\nCompleted "
         f"{len(completed_tasks)}/{len(tasks)} tasks."
     )
 
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

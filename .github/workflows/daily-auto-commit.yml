@@ -41,17 +41,17 @@ jobs:
         env:
           TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
         run: |
-          git clone "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" "$GITHUB_WORKSPACE/target"
+          git clone "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" "$RUNNER_TEMP/target"
 
       - name: Configure target Git
-        working-directory: ${{ github.workspace }}/target
+        working-directory: ${{ runner.temp }}/target
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Run daily automation
         env:
-          PROJECT_REPOSITORY: ${{ github.workspace }}/target
+          PROJECT_REPOSITORY: ${{ runner.temp }}/target
           AGENT_REPOSITORY: ${{ github.workspace }}
           TASK_POOL: ${{ github.workspace }}/tasks/task_pool.json
           TASK_STATE: ${{ github.workspace }}/tasks/state.json
@@ -59,7 +59,7 @@ jobs:
           python -m app.daily_run
 
       - name: Push target repository
-        working-directory: ${{ github.workspace }}/target
+        working-directory: ${{ runner.temp }}/target
         env:
           TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
         run: |

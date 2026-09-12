@@ -10,18 +10,14 @@ def main():
     pool = TaskPool(POOL, STATE)
     selector = TaskSelector(pool)
 
-    available = pool.get_available_tasks()
-
-    print(f"Available tasks: {len(available)}")
-
-    selected = selector.select(3)
+    tasks = selector.select(3)
 
     print("\nSelected tasks:")
 
-    for task in selected:
+    for task in tasks:
         print(
-            f'{task["id"]}: '
-            f'{task["title"]}'
+            f"{task['id']}: "
+            f"{task['title']}"
         )
 
 

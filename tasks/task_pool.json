@@ -1,82 +1,758 @@
 [
   {
     "id": 1,
-    "type": "testing",
-    "title": "Add division by zero test",
-    "description": "Add a test verifying that division by zero raises ValueError.",
-    "action": "add_division_zero_test",
-    "commit_message": "test: add division by zero coverage"
+    "title": "Add round value function",
+    "type": "calculator",
+    "action": "add_round_function",
+    "commit_message": "feat: add round value function"
   },
   {
     "id": 2,
-    "type": "testing",
-    "title": "Add negative calculator tests",
-    "description": "Add tests covering negative calculator inputs.",
-    "action": "add_negative_calculator_tests",
-    "commit_message": "test: add negative calculator coverage"
+    "title": "Add clamp function",
+    "type": "calculator",
+    "action": "add_clamp_function",
+    "commit_message": "feat: add clamp function"
   },
   {
     "id": 3,
-    "type": "testing",
-    "title": "Test empty word count",
-    "description": "Add a test verifying that empty text has zero words.",
-    "action": "add_empty_word_count_test",
-    "commit_message": "test: cover empty word count"
+    "title": "Add average function",
+    "type": "calculator",
+    "action": "add_average_function",
+    "commit_message": "feat: add average function"
   },
   {
     "id": 4,
-    "type": "documentation",
-    "title": "Add usage documentation",
-    "description": "Add a usage section to README.md.",
-    "action": "add_usage_section",
-    "commit_message": "docs: add usage instructions"
+    "title": "Add minimum function",
+    "type": "calculator",
+    "action": "add_minimum_function",
+    "commit_message": "feat: add minimum function"
   },
   {
     "id": 5,
-    "type": "documentation",
-    "title": "Add development documentation",
-    "description": "Document how to run the project's tests.",
-    "action": "add_development_section",
-    "commit_message": "docs: add development instructions"
+    "title": "Add maximum function",
+    "type": "calculator",
+    "action": "add_maximum_function",
+    "commit_message": "feat: add maximum function"
   },
   {
     "id": 6,
-    "type": "testing",
-    "title": "Add another division test",
-    "description": "Add coverage for a normal decimal division.",
-    "action": "add_division_zero_test",
-    "commit_message": "test: improve division coverage"
+    "title": "Add percentage validation",
+    "type": "calculator",
+    "action": "add_percentage_validation",
+    "commit_message": "feat: add percentage validation"
   },
   {
     "id": 7,
-    "type": "testing",
-    "title": "Expand negative number coverage",
-    "description": "Expand calculator coverage for negative values.",
-    "action": "add_negative_calculator_tests",
-    "commit_message": "test: expand negative number coverage"
+    "title": "Add calculator module documentation",
+    "type": "calculator",
+    "action": "add_calculator_docstrings",
+    "commit_message": "feat: add calculator module documentation"
   },
   {
     "id": 8,
-    "type": "testing",
-    "title": "Test empty text",
-    "description": "Add explicit coverage for empty text input.",
-    "action": "add_empty_word_count_test",
-    "commit_message": "test: cover empty text input"
+    "title": "Add calculator percentage constant",
+    "type": "calculator",
+    "action": "add_calculator_constants",
+    "commit_message": "feat: add calculator percentage constant"
   },
   {
     "id": 9,
-    "type": "documentation",
-    "title": "Document utility usage",
-    "description": "Document how the utility package is used.",
-    "action": "add_usage_section",
-    "commit_message": "docs: document utility usage"
+    "title": "Add calculate operation dispatcher",
+    "type": "calculator",
+    "action": "add_calculator_operations",
+    "commit_message": "feat: add calculate operation dispatcher"
   },
   {
     "id": 10,
+    "title": "Add square function",
+    "type": "calculator",
+    "action": "add_square_function",
+    "commit_message": "feat: add square function"
+  },
+  {
+    "id": 11,
+    "title": "Add cube function",
+    "type": "calculator",
+    "action": "add_cube_function",
+    "commit_message": "feat: add cube function"
+  },
+  {
+    "id": 12,
+    "title": "Add reciprocal function",
+    "type": "calculator",
+    "action": "add_reciprocal_function",
+    "commit_message": "feat: add reciprocal function"
+  },
+  {
+    "id": 13,
+    "title": "Add sum values function",
+    "type": "calculator",
+    "action": "add_sum_function",
+    "commit_message": "feat: add sum values function"
+  },
+  {
+    "id": 14,
+    "title": "Add median function",
+    "type": "calculator",
+    "action": "add_median_function",
+    "commit_message": "feat: add median function"
+  },
+  {
+    "id": 15,
+    "title": "Extract calculator division error message",
+    "type": "code_quality",
+    "action": "add_calculator_zero_division_message_constant",
+    "commit_message": "feat: extract calculator division error message"
+  },
+  {
+    "id": 16,
+    "title": "Extract validator phone length constant",
+    "type": "code_quality",
+    "action": "add_validator_phone_length_constant",
+    "commit_message": "feat: extract validator phone length constant"
+  },
+  {
+    "id": 17,
+    "title": "Document text utilities module",
+    "type": "code_quality",
+    "action": "add_text_utils_module_docstring",
+    "commit_message": "feat: document text utilities module"
+  },
+  {
+    "id": 18,
+    "title": "Document validator module",
+    "type": "code_quality",
+    "action": "add_validator_module_docstring",
+    "commit_message": "feat: document validator module"
+  },
+  {
+    "id": 19,
+    "title": "Document config module",
+    "type": "code_quality",
+    "action": "add_config_module_docstring",
+    "commit_message": "feat: document config module"
+  },
+  {
+    "id": 20,
+    "title": "Document file utilities module",
+    "type": "code_quality",
+    "action": "add_file_utils_module_docstring",
+    "commit_message": "feat: document file utilities module"
+  },
+  {
+    "id": 21,
+    "title": "Document calculator module",
+    "type": "code_quality",
+    "action": "add_calculator_module_docstring",
+    "commit_message": "feat: document calculator module"
+  },
+  {
+    "id": 22,
+    "title": "Extract username minimum length constant",
+    "type": "code_quality",
+    "action": "add_validator_username_length_constant",
+    "commit_message": "feat: extract username minimum length constant"
+  },
+  {
+    "id": 23,
+    "title": "Extract text normalization separator constant",
+    "type": "code_quality",
+    "action": "add_text_utils_separator_constant",
+    "commit_message": "feat: extract text normalization separator constant"
+  },
+  {
+    "id": 24,
+    "title": "Document calculator add function",
+    "type": "code_quality",
+    "action": "add_calculator_add_docstring",
+    "commit_message": "feat: document calculator add function"
+  },
+  {
+    "id": 25,
+    "title": "Document validator age function",
+    "type": "code_quality",
+    "action": "add_validator_age_docstring",
+    "commit_message": "feat: document validator age function"
+  },
+  {
+    "id": 26,
+    "title": "Document text reverse function",
+    "type": "code_quality",
+    "action": "add_text_utils_reverse_docstring",
+    "commit_message": "feat: document text reverse function"
+  },
+  {
+    "id": 27,
+    "title": "Document config value lookup",
+    "type": "code_quality",
+    "action": "add_config_get_value_docstring",
+    "commit_message": "feat: document config value lookup"
+  },
+  {
+    "id": 28,
+    "title": "Document file write function",
+    "type": "code_quality",
+    "action": "add_file_utils_write_docstring",
+    "commit_message": "feat: document file write function"
+  },
+  {
+    "id": 29,
+    "title": "Add log level configuration",
+    "type": "config",
+    "action": "add_log_level_config",
+    "commit_message": "feat: add log level configuration"
+  },
+  {
+    "id": 30,
+    "title": "Add cache enabled configuration",
+    "type": "config",
+    "action": "add_cache_enabled_config",
+    "commit_message": "feat: add cache enabled configuration"
+  },
+  {
+    "id": 31,
+    "title": "Add API URL configuration",
+    "type": "config",
+    "action": "add_api_url_config",
+    "commit_message": "feat: add api url configuration"
+  },
+  {
+    "id": 32,
+    "title": "Add database timeout configuration",
+    "type": "config",
+    "action": "add_database_timeout_config",
+    "commit_message": "feat: add database timeout configuration"
+  },
+  {
+    "id": 33,
+    "title": "Add required config lookup",
+    "type": "config",
+    "action": "add_get_required_config",
+    "commit_message": "feat: add required config lookup"
+  },
+  {
+    "id": 34,
+    "title": "Add config key existence helper",
+    "type": "config",
+    "action": "add_config_key_exists",
+    "commit_message": "feat: add config key existence helper"
+  },
+  {
+    "id": 35,
+    "title": "Add config without overrides helper",
+    "type": "config",
+    "action": "add_config_without_overrides",
+    "commit_message": "feat: add config without overrides helper"
+  },
+  {
+    "id": 36,
+    "title": "Add config validation helper",
+    "type": "config",
+    "action": "add_config_validation",
+    "commit_message": "feat: add config validation helper"
+  },
+  {
+    "id": 37,
+    "title": "Add config copy helper",
+    "type": "config",
+    "action": "add_config_copy",
+    "commit_message": "feat: add config copy helper"
+  },
+  {
+    "id": 38,
+    "title": "Add environment name configuration",
+    "type": "config",
+    "action": "add_environment_name_config",
+    "commit_message": "feat: add environment name configuration"
+  },
+  {
+    "id": 39,
+    "title": "Add request timeout configuration",
+    "type": "config",
+    "action": "add_request_timeout_config",
+    "commit_message": "feat: add request timeout configuration"
+  },
+  {
+    "id": 40,
+    "title": "Add feature enabled configuration",
+    "type": "config",
+    "action": "add_feature_enabled_config",
+    "commit_message": "feat: add feature enabled configuration"
+  },
+  {
+    "id": 41,
+    "title": "Add region configuration",
+    "type": "config",
+    "action": "add_region_config",
+    "commit_message": "feat: add region configuration"
+  },
+  {
+    "id": 42,
+    "title": "Add log format configuration",
+    "type": "config",
+    "action": "add_log_format_config",
+    "commit_message": "feat: add log format configuration"
+  },
+  {
+    "id": 43,
+    "title": "Add installation documentation",
     "type": "documentation",
-    "title": "Document development workflow",
-    "description": "Document the project's development workflow.",
-    "action": "add_development_section",
-    "commit_message": "docs: document development workflow"
+    "action": "add_installation_section",
+    "commit_message": "feat: add installation documentation"
+  },
+  {
+    "id": 44,
+    "title": "Add project structure documentation",
+    "type": "documentation",
+    "action": "add_project_structure_section",
+    "commit_message": "feat: add project structure documentation"
+  },
+  {
+    "id": 45,
+    "title": "Add testing documentation",
+    "type": "documentation",
+    "action": "add_testing_section",
+    "commit_message": "feat: add testing documentation"
+  },
+  {
+    "id": 46,
+    "title": "Add configuration documentation",
+    "type": "documentation",
+    "action": "add_configuration_section",
+    "commit_message": "feat: add configuration documentation"
+  },
+  {
+    "id": 47,
+    "title": "Add calculator examples",
+    "type": "documentation",
+    "action": "add_calculator_examples",
+    "commit_message": "feat: add calculator examples"
+  },
+  {
+    "id": 48,
+    "title": "Add text utility examples",
+    "type": "documentation",
+    "action": "add_text_utils_examples",
+    "commit_message": "feat: add text utility examples"
+  },
+  {
+    "id": 49,
+    "title": "Add validator examples",
+    "type": "documentation",
+    "action": "add_validator_examples",
+    "commit_message": "feat: add validator examples"
+  },
+  {
+    "id": 50,
+    "title": "Add file utility examples",
+    "type": "documentation",
+    "action": "add_file_utils_examples",
+    "commit_message": "feat: add file utility examples"
+  },
+  {
+    "id": 51,
+    "title": "Add contributing documentation",
+    "type": "documentation",
+    "action": "add_contributing_section",
+    "commit_message": "feat: add contributing documentation"
+  },
+  {
+    "id": 52,
+    "title": "Add usage documentation",
+    "type": "documentation",
+    "action": "add_usage_section",
+    "commit_message": "feat: add usage documentation"
+  },
+  {
+    "id": 53,
+    "title": "Add API reference documentation",
+    "type": "documentation",
+    "action": "add_api_reference_section",
+    "commit_message": "feat: add api reference documentation"
+  },
+  {
+    "id": 54,
+    "title": "Add error handling documentation",
+    "type": "documentation",
+    "action": "add_error_handling_section",
+    "commit_message": "feat: add error handling documentation"
+  },
+  {
+    "id": 55,
+    "title": "Add development workflow documentation",
+    "type": "documentation",
+    "action": "add_development_workflow_section",
+    "commit_message": "feat: add development workflow documentation"
+  },
+  {
+    "id": 56,
+    "title": "Add file name without extension",
+    "type": "file_utils",
+    "action": "add_file_name_without_extension",
+    "commit_message": "feat: add file name without extension"
+  },
+  {
+    "id": 57,
+    "title": "Add absolute file path helper",
+    "type": "file_utils",
+    "action": "add_absolute_file_path",
+    "commit_message": "feat: add absolute file path helper"
+  },
+  {
+    "id": 58,
+    "title": "Add parent directory helper",
+    "type": "file_utils",
+    "action": "add_parent_directory",
+    "commit_message": "feat: add parent directory helper"
+  },
+  {
+    "id": 59,
+    "title": "Add empty file detection",
+    "type": "file_utils",
+    "action": "add_file_is_empty",
+    "commit_message": "feat: add empty file detection"
+  },
+  {
+    "id": 60,
+    "title": "Add read lines helper",
+    "type": "file_utils",
+    "action": "add_read_lines",
+    "commit_message": "feat: add read lines helper"
+  },
+  {
+    "id": 61,
+    "title": "Add append text file helper",
+    "type": "file_utils",
+    "action": "add_append_text_file",
+    "commit_message": "feat: add append text file helper"
+  },
+  {
+    "id": 62,
+    "title": "Add directory creation helper",
+    "type": "file_utils",
+    "action": "add_create_directory",
+    "commit_message": "feat: add directory creation helper"
+  },
+  {
+    "id": 63,
+    "title": "Add file deletion helper",
+    "type": "file_utils",
+    "action": "add_delete_file",
+    "commit_message": "feat: add file deletion helper"
+  },
+  {
+    "id": 64,
+    "title": "Add file size in kilobytes",
+    "type": "file_utils",
+    "action": "add_file_size_kilobytes",
+    "commit_message": "feat: add file size in kilobytes"
+  },
+  {
+    "id": 65,
+    "title": "Add file size in megabytes",
+    "type": "file_utils",
+    "action": "add_file_size_megabytes",
+    "commit_message": "feat: add file size in megabytes"
+  },
+  {
+    "id": 66,
+    "title": "Add lowercase file extension helper",
+    "type": "file_utils",
+    "action": "add_file_extension_lowercase",
+    "commit_message": "feat: add lowercase file extension helper"
+  },
+  {
+    "id": 67,
+    "title": "Add regular file detection",
+    "type": "file_utils",
+    "action": "add_is_regular_file",
+    "commit_message": "feat: add regular file detection"
+  },
+  {
+    "id": 68,
+    "title": "Add parent name helper",
+    "type": "file_utils",
+    "action": "add_parent_name",
+    "commit_message": "feat: add parent name helper"
+  },
+  {
+    "id": 69,
+    "title": "Add power function tests",
+    "type": "testing",
+    "action": "add_power_tests",
+    "commit_message": "feat: add power function tests"
+  },
+  {
+    "id": 70,
+    "title": "Add absolute function tests",
+    "type": "testing",
+    "action": "add_absolute_tests",
+    "commit_message": "feat: add absolute function tests"
+  },
+  {
+    "id": 71,
+    "title": "Add percentage function tests",
+    "type": "testing",
+    "action": "add_percentage_tests",
+    "commit_message": "feat: add percentage function tests"
+  },
+  {
+    "id": 72,
+    "title": "Add normalize text tests",
+    "type": "testing",
+    "action": "add_normalize_text_tests",
+    "commit_message": "feat: add normalize text tests"
+  },
+  {
+    "id": 73,
+    "title": "Add reverse text tests",
+    "type": "testing",
+    "action": "add_reverse_text_tests",
+    "commit_message": "feat: add reverse text tests"
+  },
+  {
+    "id": 74,
+    "title": "Add contains word tests",
+    "type": "testing",
+    "action": "add_contains_word_tests",
+    "commit_message": "feat: add contains word tests"
+  },
+  {
+    "id": 75,
+    "title": "Add username validation tests",
+    "type": "testing",
+    "action": "add_username_validation_tests",
+    "commit_message": "feat: add username validation tests"
+  },
+  {
+    "id": 76,
+    "title": "Add phone validation tests",
+    "type": "testing",
+    "action": "add_phone_validation_tests",
+    "commit_message": "feat: add phone validation tests"
+  },
+  {
+    "id": 77,
+    "title": "Add password length tests",
+    "type": "testing",
+    "action": "add_password_length_tests",
+    "commit_message": "feat: add password length tests"
+  },
+  {
+    "id": 78,
+    "title": "Add divide by zero test",
+    "type": "testing",
+    "action": "add_divide_by_zero_test",
+    "commit_message": "feat: add divide by zero test"
+  },
+  {
+    "id": 79,
+    "title": "Add negative number addition test",
+    "type": "testing",
+    "action": "add_add_negative_numbers_test",
+    "commit_message": "feat: add negative number addition test"
+  },
+  {
+    "id": 80,
+    "title": "Add multiply by zero test",
+    "type": "testing",
+    "action": "add_multiply_zero_test",
+    "commit_message": "feat: add multiply by zero test"
+  },
+  {
+    "id": 81,
+    "title": "Add missing email domain test",
+    "type": "testing",
+    "action": "add_email_missing_domain_test",
+    "commit_message": "feat: add missing email domain test"
+  },
+  {
+    "id": 82,
+    "title": "Add punctuation normalization test",
+    "type": "text_utils",
+    "action": "add_normalize_text_punctuation_test",
+    "commit_message": "feat: add punctuation normalization test"
+  },
+  {
+    "id": 83,
+    "title": "Add Unicode normalization test",
+    "type": "text_utils",
+    "action": "add_normalize_text_unicode_test",
+    "commit_message": "feat: add unicode normalization test"
+  },
+  {
+    "id": 84,
+    "title": "Add empty reverse test",
+    "type": "text_utils",
+    "action": "add_reverse_text_empty_test",
+    "commit_message": "feat: add empty reverse test"
+  },
+  {
+    "id": 85,
+    "title": "Add Unicode reverse test",
+    "type": "text_utils",
+    "action": "add_reverse_text_unicode_test",
+    "commit_message": "feat: add unicode reverse test"
+  },
+  {
+    "id": 86,
+    "title": "Add mixed whitespace word count test",
+    "type": "text_utils",
+    "action": "add_word_count_whitespace_test",
+    "commit_message": "feat: add mixed whitespace word count test"
+  },
+  {
+    "id": 87,
+    "title": "Add empty uppercase test",
+    "type": "text_utils",
+    "action": "add_uppercase_text_empty_test",
+    "commit_message": "feat: add empty uppercase test"
+  },
+  {
+    "id": 88,
+    "title": "Add Unicode character count test",
+    "type": "text_utils",
+    "action": "add_character_count_unicode_test",
+    "commit_message": "feat: add unicode character count test"
+  },
+  {
+    "id": 89,
+    "title": "Add case-sensitive word test",
+    "type": "text_utils",
+    "action": "add_contains_word_case_test",
+    "commit_message": "feat: add case-sensitive word test"
+  },
+  {
+    "id": 90,
+    "title": "Add empty word search test",
+    "type": "text_utils",
+    "action": "add_contains_word_empty_test",
+    "commit_message": "feat: add empty word search test"
+  },
+  {
+    "id": 91,
+    "title": "Add empty word count test",
+    "type": "text_utils",
+    "action": "add_word_count_empty_test",
+    "commit_message": "feat: add empty word count test"
+  },
+  {
+    "id": 92,
+    "title": "Add mixed-case uppercase test",
+    "type": "text_utils",
+    "action": "add_uppercase_text_mixed_case_test",
+    "commit_message": "feat: add mixed-case uppercase test"
+  },
+  {
+    "id": 93,
+    "title": "Add empty character count test",
+    "type": "text_utils",
+    "action": "add_character_count_empty_test",
+    "commit_message": "feat: add empty character count test"
+  },
+  {
+    "id": 94,
+    "title": "Add single-character reverse test",
+    "type": "text_utils",
+    "action": "add_reverse_text_single_character_test",
+    "commit_message": "feat: add single-character reverse test"
+  },
+  {
+    "id": 95,
+    "title": "Add email whitespace tests",
+    "type": "validator",
+    "action": "add_email_whitespace_tests",
+    "commit_message": "feat: add email whitespace tests"
+  },
+  {
+    "id": 96,
+    "title": "Add email boundary tests",
+    "type": "validator",
+    "action": "add_email_boundary_tests",
+    "commit_message": "feat: add email boundary tests"
+  },
+  {
+    "id": 97,
+    "title": "Add age boundary tests",
+    "type": "validator",
+    "action": "add_age_boundary_tests",
+    "commit_message": "feat: add age boundary tests"
+  },
+  {
+    "id": 98,
+    "title": "Add empty string validation tests",
+    "type": "validator",
+    "action": "add_empty_string_validation_tests",
+    "commit_message": "feat: add empty string validation tests"
+  },
+  {
+    "id": 99,
+    "title": "Add username boundary tests",
+    "type": "validator",
+    "action": "add_username_boundary_tests",
+    "commit_message": "feat: add username boundary tests"
+  },
+  {
+    "id": 100,
+    "title": "Add username special character tests",
+    "type": "validator",
+    "action": "add_username_special_character_tests",
+    "commit_message": "feat: add username special character tests"
+  },
+  {
+    "id": 101,
+    "title": "Add phone format tests",
+    "type": "validator",
+    "action": "add_phone_format_tests",
+    "commit_message": "feat: add phone format tests"
+  },
+  {
+    "id": 102,
+    "title": "Add invalid phone length tests",
+    "type": "validator",
+    "action": "add_phone_invalid_length_tests",
+    "commit_message": "feat: add invalid phone length tests"
+  },
+  {
+    "id": 103,
+    "title": "Add password boundary tests",
+    "type": "validator",
+    "action": "add_password_boundary_tests",
+    "commit_message": "feat: add password boundary tests"
+  },
+  {
+    "id": 104,
+    "title": "Add missing at-sign email test",
+    "type": "validator",
+    "action": "add_email_missing_at_test",
+    "commit_message": "feat: add missing at-sign email test"
+  },
+  {
+    "id": 105,
+    "title": "Add negative age test",
+    "type": "validator",
+    "action": "add_age_negative_test",
+    "commit_message": "feat: add negative age test"
+  },
+  {
+    "id": 106,
+    "title": "Add empty username test",
+    "type": "validator",
+    "action": "add_username_empty_test",
+    "commit_message": "feat: add empty username test"
+  },
+  {
+    "id": 107,
+    "title": "Add phone letters test",
+    "type": "validator",
+    "action": "add_phone_letters_test",
+    "commit_message": "feat: add phone letters test"
+  },
+  {
+    "id": 108,
+    "title": "Add short password test",
+    "type": "validator",
+    "action": "add_password_short_test",
+    "commit_message": "feat: add short password test"
   }
 ]

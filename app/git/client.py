@@ -46,8 +46,9 @@ class GitClient:
         return self.run("commit", "-m", message)
 
     def log(self, count: int = 10) -> str:
-        return self.run(
-            "log",
-            f"-{count}",
-            "--oneline",
-        )
+        return self.run("log", f"-{count}", "--oneline")
+
+    def restore_worktree(self) -> None:
+        """Discard all uncommitted tracked and untracked changes."""
+        self.run("reset", "--hard", "HEAD")
+        self.run("clean", "-fd")

@@ -1,28 +1,43 @@
-from app.task_manager.pool import TaskPool
-from app.task_manager.executor import TaskExecutor
+import sys
+
+from app.executors.calculator import CalculatorExecutor
 
 
-POOL = "tasks/task_pool.json"
-STATE = "tasks/state.json"
-
-REPOSITORY = (
+PROJECT_REPOSITORY = (
     "C:/Users/Shamanth Krishna VR/Desktop/"
     "auto-commit-test-repo"
 )
 
 
 def main():
-    pool = TaskPool(POOL, STATE)
+    if len(sys.argv) != 2:
+        print(
+            "Usage: python -m app.test_executor <action>"
+        )
+        raise SystemExit(1)
 
-    tasks = pool.load_tasks()
+    action = sys.argv[1]
 
-    task = tasks[0]
+    executor = CalculatorExecutor()
 
-    executor = TaskExecutor(REPOSITORY)
+    task = {
+        "id": 0,
+        "title": action,
+        "type": "calculator",
+        "action": action,
+        "commit_message": (
+            "test: validate calculator executor"
+        ),
+    }
 
-    print(f"Selected task: {task['title']}")
+    print(f"Executing action: {action}")
 
-    executor.execute(task)
+    executor.execute(
+        task,
+        PROJECT_REPOSITORY,
+    )
+
+    print("Task execution completed.")
 
 
 if __name__ == "__main__":

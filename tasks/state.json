@@ -1,7 +1,8 @@
 {
   "cycle": 1,
   "used_tasks": [
-    2
+    2,
+    3
   ],
   "total_tasks": 108
 }

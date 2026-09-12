@@ -9,8 +9,9 @@
   },
   {
     "id": 2,
-    "title": "Add negative calculator tests",
     "type": "testing",
+    "title": "Add negative calculator tests",
+    "description": "Add tests covering negative calculator inputs.",
     "action": "add_negative_calculator_tests",
     "commit_message": "test: add negative calculator coverage"
   },

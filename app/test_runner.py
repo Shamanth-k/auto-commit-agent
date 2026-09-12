@@ -32,12 +32,12 @@ def main():
     )
 
     task = {
-        "id": 2,
-        "title": "Add negative calculator tests",
-        "type": "testing",
-        "action": "add_negative_calculator_tests",
-        "commit_message": "test: add negative calculator coverage",
-    }
+    "id": 3,
+    "title": "Add empty word count test",
+    "type": "testing",
+    "action": "add_empty_word_count_test",
+    "commit_message": "test: cover empty word count",
+}
 
     runner.run(task)
 

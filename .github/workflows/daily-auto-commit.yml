@@ -41,7 +41,7 @@ jobs:
         env:
           TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
         run: |
-          git clone "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" "$RUNNER_TEMP/target"
+          git clone "https://x-access-token:${TARGET_TOKEN}@github.com/${{ vars.TARGET_REPOSITORY }}.git" "$RUNNER_TEMP/target"
 
       - name: Configure target Git
         working-directory: ${{ runner.temp }}/target
@@ -63,7 +63,7 @@ jobs:
         env:
           TARGET_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
         run: |
-          git push "https://x-access-token:${TARGET_TOKEN}@github.com/Shamanth-k/auto-commit-test-repo.git" main
+          git push "https://x-access-token:${TARGET_TOKEN}@github.com/${{ vars.TARGET_REPOSITORY }}.git" main
 
       - name: Push automation state
         env:

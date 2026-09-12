@@ -69,4 +69,4 @@ jobs:
         env:
           AGENT_TOKEN: ${{ secrets.AUTO_COMMIT_PAT }}
         run: |
-          git push "https://x-access-token:${AGENT_TOKEN}@github.com/Shamanth-k/auto-commit-agent.git" main
+          git push "https://x-access-token:${AGENT_TOKEN}@github.com/${{ github.repository }}.git" main

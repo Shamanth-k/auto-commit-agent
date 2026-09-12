@@ -38,6 +38,12 @@ class TaskPool:
 
         self.save_state(state)
 
+    def is_cycle_complete(self) -> bool:
+        tasks = self.load_tasks()
+        state = self.load_state()
+
+        return len(state["used_tasks"]) >= len(tasks)
+
     def reset_cycle(self) -> None:
         state = self.load_state()
 

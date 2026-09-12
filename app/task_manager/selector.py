@@ -8,32 +8,12 @@ class TaskSelector:
         self.pool = pool
 
     def select(self, count: int = 3) -> list[dict]:
-        selected = []
-        excluded_ids = set()
+        available = self.pool.get_available_tasks()
 
-        while len(selected) < count:
-            available = [
-                task
-                for task in self.pool.get_available_tasks()
-                if task["id"] not in excluded_ids
-            ]
-
-            if not available:
-                self.pool.reset_cycle()
-                excluded_ids.clear()
-                available = self.pool.get_available_tasks()
-
-            remaining = count - len(selected)
-
-            batch = random.sample(
-                available,
-                min(remaining, len(available)),
+        if len(available) < count:
+            raise RuntimeError(
+                f"Only {len(available)} tasks remain in the current cycle; "
+                f"{count} required."
             )
 
-            selected.extend(batch)
-
-            excluded_ids.update(
-                task["id"] for task in batch
-            )
-
-        return selected
+        return random.sample(available, count)

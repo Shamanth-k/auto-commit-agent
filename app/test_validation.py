@@ -1,20 +1,23 @@
 from app.validation.runner import Validator
 
 
-REPOSITORY = (
-    "C:/Users/Shamanth Krishna VR/Desktop/"
-    "auto-commit-test-repo"
-)
+def test_validator_accepts_passing_repository(tmp_path):
+    validator = Validator(str(tmp_path))
+
+    (tmp_path / "test_sample.py").write_text(
+        "def test_example():\n    assert 1 + 1 == 2\n",
+        encoding="utf-8",
+    )
+
+    assert validator.run() is True
 
 
-def main():
-    validator = Validator(REPOSITORY)
+def test_validator_rejects_failing_repository(tmp_path):
+    validator = Validator(str(tmp_path))
 
-    if validator.run():
-        print("VALIDATION SUCCESS")
-    else:
-        print("VALIDATION FAILED")
+    (tmp_path / "test_sample.py").write_text(
+        "def test_example():\n    assert 1 + 1 == 3\n",
+        encoding="utf-8",
+    )
 
-
-if __name__ == "__main__":
-    main()
+    assert validator.run() is False

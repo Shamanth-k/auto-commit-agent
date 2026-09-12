@@ -99,10 +99,10 @@
   },
   {
     "id": 15,
-    "title": "Extract calculator division error message",
+    "title": "Document calculator subtraction",
     "type": "code_quality",
-    "action": "add_calculator_zero_division_message_constant",
-    "commit_message": "feat: extract calculator division error message"
+    "action": "add_calculator_subtract_docstring",
+    "commit_message": "docs: document calculator subtraction"
   },
   {
     "id": 16,
@@ -134,10 +134,10 @@
   },
   {
     "id": 20,
-    "title": "Document file utilities module",
+    "title": "Document file reading helper",
     "type": "code_quality",
-    "action": "add_file_utils_module_docstring",
-    "commit_message": "feat: document file utilities module"
+    "action": "add_file_utils_read_docstring",
+    "commit_message": "docs: document file reading helper"
   },
   {
     "id": 21,
@@ -624,10 +624,10 @@
   },
   {
     "id": 90,
-    "title": "Add empty word search test",
+    "title": "Add single-word count test",
     "type": "text_utils",
-    "action": "add_contains_word_empty_test",
-    "commit_message": "feat: add empty word search test"
+    "action": "add_word_count_single_word_test",
+    "commit_message": "test: add single-word count coverage"
   },
   {
     "id": 91,

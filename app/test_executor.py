@@ -1,44 +1,28 @@
-import sys
-
-from app.executors.calculator import CalculatorExecutor
+from app.executors.registry import EXECUTORS, get_executor
 
 
-PROJECT_REPOSITORY = (
-    "C:/Users/Shamanth Krishna VR/Desktop/"
-    "auto-commit-test-repo"
-)
-
-
-def main():
-    if len(sys.argv) != 2:
-        print(
-            "Usage: python -m app.test_executor <action>"
-        )
-        raise SystemExit(1)
-
-    action = sys.argv[1]
-
-    executor = CalculatorExecutor()
-
-    task = {
-        "id": 0,
-        "title": action,
-        "type": "calculator",
-        "action": action,
-        "commit_message": (
-            "test: validate calculator executor"
-        ),
+def test_all_registered_executors_are_available():
+    expected_types = {
+        "calculator",
+        "documentation",
+        "testing",
+        "code_quality",
+        "text_utils",
+        "validator",
+        "config",
+        "file_utils",
     }
 
-    print(f"Executing action: {action}")
+    assert set(EXECUTORS) == expected_types
 
-    executor.execute(
-        task,
-        PROJECT_REPOSITORY,
-    )
-
-    print("Task execution completed.")
+    for task_type in expected_types:
+        assert get_executor(task_type) is EXECUTORS[task_type]
 
 
-if __name__ == "__main__":
-    main()
+def test_unknown_executor_type_raises_error():
+    try:
+        get_executor("unknown")
+    except ValueError as error:
+        assert "No executor registered" in str(error)
+    else:
+        raise AssertionError("Expected ValueError")

@@ -13,8 +13,14 @@ class CodeQualityExecutor(BaseExecutor):
         action = task["action"]
 
         actions = {
-            "add_calculator_zero_division_message_constant": (
-                self._add_calculator_zero_division_message_constant
+            "add_calculator_subtract_docstring": (
+                self._add_calculator_subtract_docstring
+            ),
+            "add_config_module_docstring": (
+                self._add_config_module_docstring
+            ),
+            "add_file_utils_read_docstring": (
+                self._add_file_utils_read_docstring
             ),
             "add_validator_phone_length_constant": (
                 self._add_validator_phone_length_constant
@@ -28,9 +34,6 @@ class CodeQualityExecutor(BaseExecutor):
             "add_config_module_docstring": (
                 self._add_config_module_docstring
             ),
-            "add_file_utils_module_docstring": (
-                self._add_file_utils_module_docstring
-            ),
             "add_calculator_module_docstring": (
                 self._add_calculator_module_docstring
             ),
@@ -40,11 +43,21 @@ class CodeQualityExecutor(BaseExecutor):
             "add_text_utils_separator_constant": (
                 self._add_text_utils_separator_constant
             ),
-            "add_calculator_add_docstring": self._add_calculator_add_docstring,
-            "add_validator_age_docstring": self._add_validator_age_docstring,
-            "add_text_utils_reverse_docstring": self._add_text_utils_reverse_docstring,
-            "add_config_get_value_docstring": self._add_config_get_value_docstring,
-            "add_file_utils_write_docstring": self._add_file_utils_write_docstring,
+            "add_calculator_add_docstring": (
+                self._add_calculator_add_docstring
+            ),
+            "add_validator_age_docstring": (
+                self._add_validator_age_docstring
+            ),
+            "add_text_utils_reverse_docstring": (
+                self._add_text_utils_reverse_docstring
+            ),
+            "add_config_get_value_docstring": (
+                self._add_config_get_value_docstring
+            ),
+            "add_file_utils_write_docstring": (
+                self._add_file_utils_write_docstring
+            ),
         }
 
         executor = actions.get(action)
@@ -96,9 +109,7 @@ class CodeQualityExecutor(BaseExecutor):
             encoding="utf-8",
         )
 
-    # 1. Extract calculator division error message constant
-
-    def _add_calculator_zero_division_message_constant(
+    def _add_calculator_subtract_docstring(
         self,
         repository: Path,
     ) -> None:
@@ -107,40 +118,23 @@ class CodeQualityExecutor(BaseExecutor):
             "calculator.py",
         )
 
-        content = source.read_text(
-            encoding="utf-8"
-        )
-
-        constant = (
-            'DIVISION_BY_ZERO_MESSAGE = "Cannot divide by zero"'
-        )
-
-        if constant in content:
-            raise RuntimeError(
-                "Calculator division error constant already exists."
-            )
-
         old = (
-            "def divide(a: float, b: float) -> float:\n"
-            "    if b == 0:\n"
-            '        raise ValueError("Cannot divide by zero")'
+            "def subtract(a: float, b: float) -> float:\n"
+            "    return a - b"
         )
 
         new = (
-            'DIVISION_BY_ZERO_MESSAGE = "Cannot divide by zero"\n\n\n'
-            "def divide(a: float, b: float) -> float:\n"
-            "    if b == 0:\n"
-            "        raise ValueError(DIVISION_BY_ZERO_MESSAGE)"
+            "def subtract(a: float, b: float) -> float:\n"
+            '    """Return the difference between two numbers."""\n'
+            "    return a - b"
         )
 
         self._replace_once(
             source,
             old,
             new,
-            "calculator division error constant",
+            "calculator subtract docstring",
         )
-
-    # 2. Extract validator phone length constant
 
     def _add_validator_phone_length_constant(
         self,
@@ -185,8 +179,6 @@ class CodeQualityExecutor(BaseExecutor):
             "validator phone length constant",
         )
 
-    # 3. Add text utilities module docstring
-
     def _add_text_utils_module_docstring(
         self,
         repository: Path,
@@ -210,8 +202,6 @@ class CodeQualityExecutor(BaseExecutor):
             + content.lstrip(),
             encoding="utf-8",
         )
-
-    # 4. Add validator module docstring
 
     def _add_validator_module_docstring(
         self,
@@ -237,8 +227,6 @@ class CodeQualityExecutor(BaseExecutor):
             encoding="utf-8",
         )
 
-    # 5. Improve config module docstring
-
     def _add_config_module_docstring(
         self,
         repository: Path,
@@ -261,9 +249,7 @@ class CodeQualityExecutor(BaseExecutor):
             "config module docstring",
         )
 
-    # 6. Add file utilities module docstring
-
-    def _add_file_utils_module_docstring(
+    def _add_file_utils_read_docstring(
         self,
         repository: Path,
     ) -> None:
@@ -272,22 +258,23 @@ class CodeQualityExecutor(BaseExecutor):
             "file_utils.py",
         )
 
-        content = source.read_text(
-            encoding="utf-8"
+        old = (
+            "def read_text_file(path: str) -> str:\n"
+            '    return Path(path).read_text(encoding="utf-8")'
         )
 
-        if content.startswith('"""'):
-            raise RuntimeError(
-                "File utilities already has a module docstring."
-            )
-
-        source.write_text(
-            '"""Utilities for common file operations."""\n\n'
-            + content.lstrip(),
-            encoding="utf-8",
+        new = (
+            "def read_text_file(path: str) -> str:\n"
+            '    """Read UTF-8 text from a file."""\n'
+            '    return Path(path).read_text(encoding="utf-8")'
         )
 
-    # 7. Improve calculator module docstring
+        self._replace_once(
+            source,
+            old,
+            new,
+            "file read docstring",
+        )
 
     def _add_calculator_module_docstring(
         self,
@@ -310,8 +297,6 @@ class CodeQualityExecutor(BaseExecutor):
             new,
             "calculator module docstring",
         )
-
-    # 8. Extract validator username length constant
 
     def _add_validator_username_length_constant(
         self,
@@ -353,8 +338,6 @@ class CodeQualityExecutor(BaseExecutor):
             new,
             "validator username length constant",
         )
-
-    # 9. Extract text normalization separator constant
 
     def _add_text_utils_separator_constant(
         self,
@@ -399,17 +382,23 @@ class CodeQualityExecutor(BaseExecutor):
         repository: Path,
     ) -> None:
         source = self._get_source(repository, "calculator.py")
+
         old = (
             "def add(a: float, b: float) -> float:\n"
             "    return a + b"
         )
+
         new = (
             "def add(a: float, b: float) -> float:\n"
             '    """Return the sum of two numbers."""\n'
             "    return a + b"
         )
+
         self._replace_once(
-            source, old, new, "calculator add docstring"
+            source,
+            old,
+            new,
+            "calculator add docstring",
         )
 
     def _add_validator_age_docstring(
@@ -417,17 +406,23 @@ class CodeQualityExecutor(BaseExecutor):
         repository: Path,
     ) -> None:
         source = self._get_source(repository, "validator.py")
+
         old = (
             "def is_valid_age(age: int) -> bool:\n"
             "    return 0 <= age <= 120"
         )
+
         new = (
             "def is_valid_age(age: int) -> bool:\n"
             '    """Return whether age is within the supported range."""\n'
             "    return 0 <= age <= 120"
         )
+
         self._replace_once(
-            source, old, new, "validator age docstring"
+            source,
+            old,
+            new,
+            "validator age docstring",
         )
 
     def _add_text_utils_reverse_docstring(
@@ -435,17 +430,23 @@ class CodeQualityExecutor(BaseExecutor):
         repository: Path,
     ) -> None:
         source = self._get_source(repository, "text_utils.py")
+
         old = (
             "def reverse_text(text: str) -> str:\n"
             "    return text[::-1]"
         )
+
         new = (
             "def reverse_text(text: str) -> str:\n"
             '    """Return text with its characters reversed."""\n'
             "    return text[::-1]"
         )
+
         self._replace_once(
-            source, old, new, "text reverse docstring"
+            source,
+            old,
+            new,
+            "text reverse docstring",
         )
 
     def _add_config_get_value_docstring(
@@ -453,17 +454,23 @@ class CodeQualityExecutor(BaseExecutor):
         repository: Path,
     ) -> None:
         source = self._get_source(repository, "config.py")
+
         old = (
             "def get_config_value(key: str):\n"
             "    return DEFAULT_CONFIG.get(key)"
         )
+
         new = (
             "def get_config_value(key: str):\n"
             '    """Return a configuration value by key."""\n'
             "    return DEFAULT_CONFIG.get(key)"
         )
+
         self._replace_once(
-            source, old, new, "config get value docstring"
+            source,
+            old,
+            new,
+            "config get value docstring",
         )
 
     def _add_file_utils_write_docstring(
@@ -471,15 +478,21 @@ class CodeQualityExecutor(BaseExecutor):
         repository: Path,
     ) -> None:
         source = self._get_source(repository, "file_utils.py")
+
         old = (
             "def write_text_file(path: str, content: str) -> None:\n"
             '    Path(path).write_text(content, encoding="utf-8")'
         )
+
         new = (
             "def write_text_file(path: str, content: str) -> None:\n"
             '    """Write content to a UTF-8 text file."""\n'
             '    Path(path).write_text(content, encoding="utf-8")'
         )
+
         self._replace_once(
-            source, old, new, "file write docstring"
+            source,
+            old,
+            new,
+            "file write docstring",
         )

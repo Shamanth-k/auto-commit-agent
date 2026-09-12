@@ -1,3 +1,5 @@
+import os
+
 from app.git.client import GitClient
 from app.task_manager.executor import TaskExecutor
 from app.task_manager.pool import TaskPool
@@ -6,22 +8,37 @@ from app.task_manager.selector import TaskSelector
 from app.validation.runner import Validator
 
 
-PROJECT_REPOSITORY = (
-    "C:/Users/Shamanth Krishna VR/Desktop/"
-    "auto-commit-test-repo"
+PROJECT_REPOSITORY = os.environ.get(
+    "PROJECT_REPOSITORY",
+    "C:/Users/Shamanth Krishna VR/Desktop/auto-commit-test-repo",
 )
 
-AGENT_REPOSITORY = (
-    "C:/Users/Shamanth Krishna VR/Desktop/"
-    "auto-commit-agent"
+AGENT_REPOSITORY = os.environ.get(
+    "AGENT_REPOSITORY",
+    "C:/Users/Shamanth Krishna VR/Desktop/auto-commit-agent",
 )
 
-POOL = "tasks/task_pool.json"
-STATE = "tasks/state.json"
+POOL = os.environ.get(
+    "TASK_POOL",
+    "tasks/task_pool.json",
+)
+
+STATE = os.environ.get(
+    "TASK_STATE",
+    "tasks/state.json",
+)
 
 
 def main():
     pool = TaskPool(POOL, STATE)
+
+    # Start a new cycle only when the previous cycle
+    # was completely consumed.
+    if pool.is_cycle_complete():
+        pool.reset_cycle()
+        print("\nPrevious cycle completed.")
+        print("Started a new task cycle.")
+
     selector = TaskSelector(pool)
 
     executor = TaskExecutor(PROJECT_REPOSITORY)
@@ -40,9 +57,7 @@ def main():
     print("\nToday's tasks:")
 
     for task in tasks:
-        print(
-            f"{task['id']}: {task['title']}"
-        )
+        print(f"{task['id']}: {task['title']}")
 
     completed_tasks = []
 
@@ -52,9 +67,7 @@ def main():
             completed_tasks.append(task)
 
         except Exception as error:
-            print(
-                f"\nTask {task['id']} failed:"
-            )
+            print(f"\nTask {task['id']} failed:")
             print(error)
             break
 
@@ -64,10 +77,7 @@ def main():
         )
 
         state_git.add_all()
-
-        state_git.commit(
-            "chore: update task state"
-        )
+        state_git.commit("chore: update task state")
 
         print("\nState committed.")
 

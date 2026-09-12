@@ -163,7 +163,7 @@ def test_percentage_fraction():
 
         test_file = self._test_file(
             repository,
-            "test_text_utils.py",
+            "test_text_processing.py",
         )
 
         self._append_test(
@@ -184,7 +184,7 @@ def test_normalize_text_with_tabs():
 
         test_file = self._test_file(
             repository,
-            "test_text_utils.py",
+            "test_text_processing.py",
         )
 
         self._append_test(
@@ -205,7 +205,7 @@ def test_reverse_text_with_spaces():
 
         test_file = self._test_file(
             repository,
-            "test_text_utils.py",
+            "test_text_processing.py",
         )
 
         self._append_test(

@@ -4,6 +4,7 @@ from app.executors.base import BaseExecutor
 
 
 class FileUtilsExecutor(BaseExecutor):
+
     def execute(self, task: dict, repository_path: str) -> None:
         repository = Path(repository_path)
         action = task["action"]
@@ -100,20 +101,20 @@ class FileUtilsExecutor(BaseExecutor):
 
         if import_start not in content:
             raise RuntimeError(
-                "Could not find file_utils import block."
+                "Expected file_utils import block "
+                "was not found."
             )
-
-        if function_name in content:
-            return
 
         start = content.index(import_start)
         end = content.index(")", start)
-
         import_block = content[start:end]
 
+        if function_name in import_block:
+            return
+
         updated_import_block = (
-            import_block
-            + f"\n    {function_name},"
+            import_block.rstrip()
+            + f"\n    {function_name},\n"
         )
 
         content = (
@@ -214,6 +215,8 @@ def get_absolute_path(path: str) -> str:
             "def test_get_absolute_path",
             """
 def test_get_absolute_path():
+    from pathlib import Path
+
     result = get_absolute_path("example.txt")
     assert Path(result).is_absolute()
 """,
@@ -514,64 +517,99 @@ def test_get_file_size_kb(tmp_path):
         self,
         repository: Path,
     ) -> None:
-        self._source_function_exists(repository, "get_file_size")
+        self._source_function_exists(
+            repository,
+            "get_file_size",
+        )
+
         self._append_source_function(
             repository,
             "get_file_size_mb",
             """
 def get_file_size_mb(path: str) -> float:
     return get_file_size(path) / (1024 * 1024)
-            """,
+""",
         )
-        self._add_test_import(repository, "get_file_size_mb")
+
+        self._add_test_import(
+            repository,
+            "get_file_size_mb",
+        )
+
         self._append_test(
             repository,
             "def test_get_file_size_mb",
             """
 def test_get_file_size_mb(tmp_path):
     file = tmp_path / "data.bin"
-    file.write_bytes(b"a" * (1024 * 1024))
-    assert get_file_size_mb(str(file)) == 1.0
-            """,
+
+    file.write_bytes(
+        b"a" * (1024 * 1024)
+    )
+
+    assert get_file_size_mb(
+        str(file)
+    ) == 1.0
+""",
         )
 
     def _add_file_extension_lowercase(
         self,
         repository: Path,
     ) -> None:
-        self._source_function_exists(repository, "get_file_extension")
+        self._source_function_exists(
+            repository,
+            "get_file_extension",
+        )
+
         self._append_source_function(
             repository,
             "get_file_extension_lower",
             """
 def get_file_extension_lower(path: str) -> str:
     return Path(path).suffix.lower()
-            """,
+""",
         )
-        self._add_test_import(repository, "get_file_extension_lower")
+
+        self._add_test_import(
+            repository,
+            "get_file_extension_lower",
+        )
+
         self._append_test(
             repository,
             "def test_get_file_extension_lower",
             """
 def test_get_file_extension_lower():
-    assert get_file_extension_lower("Report.PDF") == ".pdf"
-            """,
+    assert get_file_extension_lower(
+        "Report.PDF"
+    ) == ".pdf"
+""",
         )
 
     def _add_is_regular_file(
         self,
         repository: Path,
     ) -> None:
-        self._source_function_exists(repository, "file_exists")
+        self._source_function_exists(
+            repository,
+            "file_exists",
+        )
+
         self._append_source_function(
             repository,
             "is_regular_file",
             """
 def is_regular_file(path: str) -> bool:
     return Path(path).is_file()
-            """,
+""",
         )
-        self._add_test_import(repository, "is_regular_file")
+
+        self._add_test_import(
+            repository,
+            "is_regular_file",
+        )
+
         self._append_test(
             repository,
             "def test_is_regular_file",
@@ -579,32 +617,54 @@ def is_regular_file(path: str) -> bool:
 def test_is_regular_file(tmp_path):
     file = tmp_path / "data.txt"
     directory = tmp_path / "folder"
-    file.write_text("data", encoding="utf-8")
+
+    file.write_text(
+        "data",
+        encoding="utf-8",
+    )
+
     directory.mkdir()
-    assert is_regular_file(str(file)) is True
-    assert is_regular_file(str(directory)) is False
-            """,
+
+    assert is_regular_file(
+        str(file)
+    ) is True
+
+    assert is_regular_file(
+        str(directory)
+    ) is False
+""",
         )
 
     def _add_parent_name(
         self,
         repository: Path,
     ) -> None:
-        self._source_function_exists(repository, "get_file_name")
+        self._source_function_exists(
+            repository,
+            "get_file_name",
+        )
+
         self._append_source_function(
             repository,
             "get_parent_name",
             """
 def get_parent_name(path: str) -> str:
     return Path(path).parent.name
-            """,
+""",
         )
-        self._add_test_import(repository, "get_parent_name")
+
+        self._add_test_import(
+            repository,
+            "get_parent_name",
+        )
+
         self._append_test(
             repository,
             "def test_get_parent_name",
             """
 def test_get_parent_name():
-    assert get_parent_name("reports/data.csv") == "reports"
-            """,
+    assert get_parent_name(
+        "reports/data.csv"
+    ) == "reports"
+""",
         )

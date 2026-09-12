@@ -36,6 +36,9 @@ class TextUtilsExecutor(BaseExecutor):
             "add_contains_word_empty_test": (
                 self._add_contains_word_empty_test
             ),
+            "add_word_count_single_word_test": (
+                self._add_word_count_single_word_test
+            ),
             "add_word_count_empty_test": self._add_word_count_empty_test,
             "add_uppercase_text_mixed_case_test": self._add_uppercase_text_mixed_case_test,
             "add_character_count_empty_test": self._add_character_count_empty_test,
@@ -307,6 +310,19 @@ def test_word_count_empty_string():
             """,
         )
 
+    def _add_word_count_single_word_test(
+        self,
+        repository: Path,
+    ) -> None:
+        self._source_function_exists(repository, "word_count")
+        self._append_test(
+            repository,
+            "def test_word_count_single_word",
+            """
+def test_word_count_single_word():
+    assert word_count("hello") == 1
+            """,
+        )
     def _add_uppercase_text_mixed_case_test(
         self,
         repository: Path,
@@ -348,3 +364,6 @@ def test_reverse_text_single_character():
     assert reverse_text("x") == "x"
             """,
         )
+
+
+

@@ -3,7 +3,7 @@ name: Daily Auto Commit
 on:
   schedule:
     # 00:30 UTC = 06:00 IST
-     - cron: "30 0 * * *"
+    - cron: "30 0 * * *"
 
   workflow_dispatch:
 
@@ -34,8 +34,8 @@ jobs:
 
       - name: Configure automation Git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ vars.COMMIT_NAME }}"
+          git config user.email "${{ vars.COMMIT_EMAIL }}"
 
       - name: Clone target repository
         env:
@@ -46,8 +46,8 @@ jobs:
       - name: Configure target Git
         working-directory: ${{ runner.temp }}/target
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ vars.COMMIT_NAME }}"
+          git config user.email "${{ vars.COMMIT_EMAIL }}"
 
       - name: Run daily automation
         env:

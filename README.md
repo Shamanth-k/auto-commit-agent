@@ -381,7 +381,29 @@ After all tasks are used, the system starts a new cycle.
 
 ---
 
-# 11. What happens if a task fails?
+# 11. Forking the project and `state.json`
+
+When someone forks the automation repository, their fork also contains the current `tasks/state.json`. This is safe because the state file belongs to that fork and will be updated independently.
+
+For example, if the original repository has already used 14 tasks, a new fork may initially contain those same 14 task IDs. The fork will then select from the remaining tasks and update its own `state.json`.
+
+If the person wants to start a **completely fresh 108-task cycle**, they should reset `tasks/state.json` in their fork to:
+
+```json
+{
+  "cycle": 1,
+  "used_tasks": [],
+  "total_tasks": 108
+}
+```
+
+This gives the fork its own independent 36-day cycle at 3 tasks per day.
+
+If they leave the existing state unchanged, the automation will simply continue from that state.
+
+---
+
+# 13. What happens if a task fails?
 
 The system is designed to fail safely.
 
@@ -412,7 +434,7 @@ The system does not mark a failed task as completed.
 
 ---
 
-# 12. Use it with your own GitHub repository
+# 13. Use it with your own GitHub repository
 
 Now let's set up the project.
 
@@ -442,7 +464,7 @@ Make sure the automation has permission to push to it.
 
 ---
 
-# 13. Create a GitHub Personal Access Token
+# 14. Create a GitHub Personal Access Token
 
 The workflow needs permission to clone and push to your repositories.
 
@@ -483,7 +505,7 @@ Copy it and keep it private.
 
 ---
 
-# 14. Add the token to the automation repository
+# 15. Add the token to the automation repository
 
 Open:
 
@@ -520,7 +542,7 @@ Never put the token directly in the YAML file.
 
 ---
 
-# 15. Tell the automation which repository to use
+# 16. Tell the automation which repository to use
 
 Go to:
 
@@ -565,7 +587,7 @@ Shamanth-k/my-project
 
 ---
 
-# 16. Set the commit name
+# 17. Set the commit name
 
 Create another variable:
 
@@ -590,7 +612,7 @@ This is the name that Git will use for the automated commits.
 
 ---
 
-# 17. Set the commit email
+# 18. Set the commit email
 
 Create:
 
@@ -623,7 +645,7 @@ Use the exact address shown by GitHub.
 
 ---
 
-# 18. Your final GitHub settings
+# 19. Your final GitHub settings
 
 Your automation repository should have:
 
@@ -656,7 +678,7 @@ Shamanth-k/my-project
 
 ---
 
-# 19. Check the workflow
+# 20. Check the workflow
 
 The important parts of the workflow are:
 
@@ -691,7 +713,7 @@ This controls who appears as the Git commit author.
 
 ---
 
-# 20. Run it manually first
+# 21. Run it manually first
 
 Go to:
 
@@ -707,7 +729,7 @@ Do not wait for the scheduled run for your first test.
 
 ---
 
-# 21. Check the result
+# 22. Check the result
 
 If successful, open your target repository:
 
@@ -733,7 +755,7 @@ You should see the state update commit.
 
 ---
 
-# 22. Daily schedule
+# 23. Daily schedule
 
 The default workflow schedule is:
 
@@ -766,7 +788,7 @@ The workflow still runs because GitHub provides the runner.
 
 ---
 
-# 23. What you need to change for a completely new project
+# 24. What you need to change for a completely new project
 
 If you want to use this system with a repository that is structurally different from `auto-commit-test-repo`, changing only:
 
@@ -813,7 +835,7 @@ will fail if your new project has no such file.
 
 ---
 
-# 24. Example: using your own project
+# 25. Example: using your own project
 
 Suppose your repository is:
 
@@ -856,7 +878,7 @@ The automation repository can then run those tasks against the new project.
 
 ---
 
-# 25. Security
+# 26. Security
 
 The repository can be public.
 
@@ -886,7 +908,7 @@ If a token is accidentally published, revoke it immediately and create a new one
 
 ---
 
-# 26. Common errors
+# 27. Common errors
 
 ## `Repository not found`
 
@@ -945,7 +967,7 @@ The task may already have been completed or may not match the target project's c
 
 ---
 
-# 27. Project structure
+# 28. Project structure
 
 ```text
 auto-commit-agent/
@@ -971,7 +993,7 @@ auto-commit-agent/
 
 ---
 
-# 28. Simple explanation
+# 29. Simple explanation
 
 If you are completely new to the project, remember this:
 
@@ -1018,7 +1040,7 @@ Git creates the commits.
 
 ---
 
-# 29. Final checklist
+# 30. Final checklist
 
 Before running:
 
